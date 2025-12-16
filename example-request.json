@@ -1,0 +1,264 @@
+{
+  "input": {
+    "workflow": {
+      "54": {
+        "inputs": {
+          "text": [
+            "557",
+            0
+          ],
+          "clip": [
+            "559",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "55": {
+        "inputs": {
+          "samples": [
+            "272",
+            0
+          ],
+          "vae": [
+            "548",
+            2
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "272": {
+        "inputs": {
+          "seed": 317245505623723,
+          "steps": 16,
+          "cfg": 1.5,
+          "sampler_name": "lcm",
+          "scheduler": "normal",
+          "denoise": 1,
+          "model": [
+            "559",
+            0
+          ],
+          "positive": [
+            "54",
+            0
+          ],
+          "negative": [
+            "276",
+            0
+          ],
+          "latent_image": [
+            "560",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "276": {
+        "inputs": {
+          "text": "watermark, text, simple background",
+          "clip": [
+            "559",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "291": {
+        "inputs": {
+          "seed": 1049106583552770,
+          "steps": 8,
+          "cfg": 1.8,
+          "sampler_name": "lcm",
+          "scheduler": "simple",
+          "denoise": 0.3,
+          "model": [
+            "559",
+            0
+          ],
+          "positive": [
+            "54",
+            0
+          ],
+          "negative": [
+            "276",
+            0
+          ],
+          "latent_image": [
+            "513",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "292": {
+        "inputs": {
+          "samples": [
+            "291",
+            0
+          ],
+          "vae": [
+            "548",
+            2
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "509": {
+        "inputs": {
+          "model_name": "ESRGAN\\4x-UltraSharp.pth"
+        },
+        "class_type": "UpscaleModelLoader",
+        "_meta": {
+          "title": "UpscaleModelLoader"
+        }
+      },
+      "510": {
+        "inputs": {
+          "upscale_model": [
+            "509",
+            0
+          ],
+          "image": [
+            "55",
+            0
+          ]
+        },
+        "class_type": "ImageUpscaleWithModel",
+        "_meta": {
+          "title": "ImageUpscaleWithModel"
+        }
+      },
+      "513": {
+        "inputs": {
+          "pixels": [
+            "567",
+            0
+          ],
+          "vae": [
+            "548",
+            2
+          ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+          "title": "VAEEncode"
+        }
+      },
+      "548": {
+        "inputs": {
+          "ckpt_name": "Checkpoints\\Z\\ILXL\\WIP\\Perfection_ILXL_Realistic_4.0.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "CheckpointLoaderSimple"
+        }
+      },
+      "557": {
+        "inputs": {
+          "text": "A happy adult woman with blonde hair wearing a kimono, sitting on her knees in a bed, using ComfyUI on her computer, she just learned how to open a workflow from an image"
+        },
+        "class_type": "PrimitiveStringMultiline",
+        "_meta": {
+          "title": "PrimitiveStringMultiline"
+        }
+      },
+      "558": {
+        "inputs": {
+          "filename_prefix": "%date:yyyy-MM-dd%/%date:yyyy-MM-dd - hh-mm-ss%",
+          "images": [
+            "292",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "559": {
+        "inputs": {
+          "lora_name": "Lora\\Lora\\SDXL\\dmd2_sdxl_4step_lora.safetensors",
+          "strength_model": 0.7500000000000001,
+          "strength_clip": 0.7500000000000001,
+          "model": [
+            "548",
+            0
+          ],
+          "clip": [
+            "548",
+            1
+          ]
+        },
+        "class_type": "LoraLoader",
+        "_meta": {
+          "title": "LoraLoader"
+        }
+      },
+      "560": {
+        "inputs": {
+          "value": 544
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+          "title": "EmptyLatentImage"
+        }
+      },
+      "561": {
+        "inputs": {
+          "images": [
+            "55",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "562": {
+        "inputs": {
+          "images": [
+            "292",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "567": {
+        "inputs": {
+          "value": 1920,
+          "image": [
+            "510",
+            0
+          ]
+        },
+        "class_type": "JWImageResizeByLongerSide",
+        "_meta": {
+          "title": "JWImageResizeByLongerSide"
+        }
+      }
+    }
+  }
+}
